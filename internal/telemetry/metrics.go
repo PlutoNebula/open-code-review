@@ -42,7 +42,7 @@ func ensureMetrics() {
 	checkMetricErr(err)
 
 	mFilesReviewed, err = m.Int64Counter("ocr.files_reviewed_total",
-		metric.WithDescription("Number of files reviewed in this session"))
+		metric.WithDescription("Number of files selected for review in this session"))
 	checkMetricErr(err)
 
 	mCommentsGenerated, err = m.Int64Counter("ocr.comments_generated_total",

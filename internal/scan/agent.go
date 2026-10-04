@@ -819,7 +819,7 @@ func (a *Agent) executeSubtask(ctx context.Context, it model.ScanItem) (bool, st
 			telemetry.AnyToAttr("file.path", it.Path),
 			telemetry.AnyToAttr("tokens", tokenCount),
 			telemetry.AnyToAttr("max_tokens", maxAllowed))
-		return false, "", nil
+		return false, "rendered prompt exceeds the token limit; main review did not start", nil
 	}
 
 	completed, stop, err := a.runner.RunMainTask(ctx, messages, it.Path)

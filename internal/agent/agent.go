@@ -476,7 +476,10 @@ func (a *Agent) ResumeInfo() *ResumeInfo {
 	return &info
 }
 
-// FilesReviewed returns the number of dispatchable files included in this review.
+// FilesReviewed returns the number of dispatchable files included in this
+// review. It measures the run's selected scope, not completions: a file that
+// failed or was waived is still counted here. The manifest's coverage sets are
+// the completed-versus-selected split.
 func (a *Agent) FilesReviewed() int64 {
 	return countDispatchable(a.diffs)
 }
